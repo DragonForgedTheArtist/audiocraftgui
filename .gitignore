@@ -8,3 +8,5 @@ pyvenv.cfg
 savefiles/*.wav
 savefiles/*.mp3
 savefiles/Pixbay/
+working/
+working_config.json

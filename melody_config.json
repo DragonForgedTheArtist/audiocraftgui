@@ -1,0 +1,6 @@
+{
+  "melody": "assets/bach.mp3",
+  "generations": 3,
+  "prompt": "80s pop track with bassy drums and synth, 110 bpm",
+  "duration": 10
+}
