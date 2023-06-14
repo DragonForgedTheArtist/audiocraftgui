@@ -3,6 +3,7 @@ from audiocraft.models import MusicGen
 from audiocraft.data.audio import audio_write
 from audiocraft.data.audio_utils import convert_audio
 from ConsoleOutput import ConsoleOutput
+from utils import generate_random_filename
 import os
 import random
 import string
@@ -73,7 +74,7 @@ class MyApp(wx.App):
                     end_waveform = convert_audio(end_waveform,sample_rate,self.sample_rate,1)
 
                     full_audio = torch.cat([start_waveform, end_waveform], dim=1)
-                    fn = self.generate_random_filename()
+                    fn = generate_random_filename()
                     fn = "%s%s%s" % (temppath, os.path.sep, fn)
                     audio_write(fn, full_audio.cpu(), self.sample_rate)
 
@@ -192,7 +193,7 @@ class MyApp(wx.App):
             output = self.extend_audio(model, prompt)
             total_duration -= self.overlap;
         for i in range(len(output)):
-            fn = self.generate_random_filename()
+            fn = generate_random_filename()
             fn = "%s%s%s" % (temppath, os.path.sep, fn)
             self.audio_options[i]="%s.wav" % fn
             audio_write(fn, output[i].cpu(), self.sample_rate)
@@ -204,19 +205,6 @@ class MyApp(wx.App):
         self.frame.progress_bar.SetValue(0)
         self.frame.lblStatus.SetLabelText("%d seconds of audio generated in %.2f seconds" % (total_duration, execution_time))
 
-    def generate_random_filename(self, length=8, extension=''):
-        # Generate a random string of uppercase letters, lowercase letters, and digits
-        letters_and_digits = string.ascii_letters + string.digits
-        random_string = ''.join(random.choice(letters_and_digits) for _ in range(length))
-        
-        # Combine the random string with the given extension (if any)
-        filename = random_string + extension
-        
-        return filename
-
 if __name__ == "__main__":
     app = MyApp(0)
     app.MainLoop()
-
-
-#filename = self.generate_random_filename(10, '.txt')
