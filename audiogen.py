@@ -213,14 +213,6 @@ class MyApp(wx.App):
         filename = random_string + extension
         
         return filename
-    
-# end of class AudoGenUIApp
-class MyApp2(wx.App):
-    def OnInit(self):
-        self.frame = TestFrame(None)
-        self.SetTopWindow(self.frame)
-        self.frame.Show()
-        return True
 
 if __name__ == "__main__":
     app = MyApp(0)
