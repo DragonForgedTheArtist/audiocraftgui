@@ -13,7 +13,7 @@ import torchaudio
 import wx
 
 temppath = "temp"
-guipath = "gui"
+emptyfile = "assets%sempty.mp3" % os.path.sep
 
 # Using small model, better results would be obtained with `medium` or `large`.
 class MyApp(wx.App):
@@ -52,9 +52,9 @@ class MyApp(wx.App):
 
         for ctrl in self.option_tracks:
             ctrl.ShowPlayerControls(wx.media.MEDIACTRLPLAYERCONTROLS_DEFAULT)
-            ctrl.Load("%s%sempty.mp3" % (guipath,os.path.sep))
+            ctrl.Load(emptyfile)
         self.frame.mctrlMain.ShowPlayerControls(wx.media.MEDIACTRLPLAYERCONTROLS_DEFAULT)
-        self.frame.mctrlMain.Load("%s%sempty.mp3" % (guipath,os.path.sep))
+        self.frame.mctrlMain.Load(emptyfile)
         self.audio = None
 
         self.temp_audio = None
@@ -112,7 +112,7 @@ class MyApp(wx.App):
     
 
     def Clear(self, event):
-        self.frame.mctrlMain.Load("%s%sempty.mp3" % (guipath,os.path.sep))
+        self.frame.mctrlMain.Load(emptyfile)
         self.audio = None
         self.temp_audio = None
         pass
@@ -152,6 +152,9 @@ class MyApp(wx.App):
 
         self.audio = self.temp_audio
 
+        if not os.path.exists(temppath):
+            os.makedirs(temppath)
+
         # Cleanup the temp dir
         for f in os.listdir(temppath):
             fn = "%s%s%s" % (temppath, os.path.sep, f)
@@ -178,10 +181,7 @@ class MyApp(wx.App):
         for i in range(5):
             self.audio_options[i]=None
             self.keepButtons[i].Enabled=False
-            self.option_tracks[i].Load("%s%sempty.mp3" % (guipath,os.path.sep))
-
-        if not os.path.exists(temppath):
-            os.makedirs(temppath)
+            self.option_tracks[i].Load(emptyfile)
 
         self.frame.lblStatus.SetLabelText("Generating...")
 
@@ -215,6 +215,12 @@ class MyApp(wx.App):
         return filename
     
 # end of class AudoGenUIApp
+class MyApp2(wx.App):
+    def OnInit(self):
+        self.frame = TestFrame(None)
+        self.SetTopWindow(self.frame)
+        self.frame.Show()
+        return True
 
 if __name__ == "__main__":
     app = MyApp(0)

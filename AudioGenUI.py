@@ -18,205 +18,205 @@ import wx.media
 class AudioGenUI ( wx.Frame ):
 
 	def __init__( self, parent ):
-		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"AudioGen", pos = wx.DefaultPosition, size = wx.Size( 800,600 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
+		wx.Frame.__init__ ( self, parent, id = wx.ID_ANY, title = u"AI Audio Generator", pos = wx.DefaultPosition, size = wx.Size( 800,675 ), style = wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL )
 
 		self.SetSizeHints( wx.DefaultSize, wx.DefaultSize )
 
-		fgSizer1 = wx.FlexGridSizer( 2, 1, 0, 0 )
-		fgSizer1.AddGrowableCol( 0 )
-		fgSizer1.AddGrowableRow( 1 )
-		fgSizer1.SetFlexibleDirection( wx.BOTH )
-		fgSizer1.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		fgSizer5 = wx.FlexGridSizer( 2, 1, 0, 0 )
+		fgSizer5.AddGrowableCol( 0 )
+		fgSizer5.AddGrowableRow( 1 )
+		fgSizer5.SetFlexibleDirection( wx.BOTH )
+		fgSizer5.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
-		fgSizer2 = wx.FlexGridSizer( 1, 3, 0, 0 )
-		fgSizer2.AddGrowableCol( 1 )
-		fgSizer2.SetFlexibleDirection( wx.BOTH )
-		fgSizer2.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		fgSizer6 = wx.FlexGridSizer( 1, 3, 0, 0 )
+		fgSizer6.AddGrowableCol( 1 )
+		fgSizer6.SetFlexibleDirection( wx.BOTH )
+		fgSizer6.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
-		self.lblPrompt = wx.StaticText( self, wx.ID_ANY, u"Prompt:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblPrompt = wx.StaticText( self, wx.ID_ANY, u"Prompt::", wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.lblPrompt.Wrap( -1 )
 
-		fgSizer2.Add( self.lblPrompt, 0, wx.ALIGN_CENTER_VERTICAL, 5 )
+		fgSizer6.Add( self.lblPrompt, 0, wx.ALL, 5 )
 
-		self.txtPrompt = wx.TextCtrl( self, wx.ID_ANY, u"80s pop track with bassy drums and synth", wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE )
-		fgSizer2.Add( self.txtPrompt, 1, wx.ALL|wx.EXPAND, 5 )
+		self.txtPrompt = wx.TextCtrl( self, wx.ID_ANY, u"80s electronic track with melodic synthesizers, catchy beat and groovy bass", wx.DefaultPosition, wx.DefaultSize, wx.TE_MULTILINE )
+		fgSizer6.Add( self.txtPrompt, 0, wx.ALL|wx.EXPAND, 5 )
 
-		bSizer2 = wx.BoxSizer( wx.VERTICAL )
+		bSizer3 = wx.BoxSizer( wx.VERTICAL )
 
-		fgSizer3 = wx.FlexGridSizer( 3, 2, 0, 0 )
-		fgSizer3.AddGrowableCol( 0 )
-		fgSizer3.SetFlexibleDirection( wx.BOTH )
-		fgSizer3.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		fgSizer7 = wx.FlexGridSizer( 3, 2, 0, 0 )
+		fgSizer7.AddGrowableCol( 0 )
+		fgSizer7.SetFlexibleDirection( wx.BOTH )
+		fgSizer7.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
-		self.m_staticText2 = wx.StaticText( self, wx.ID_ANY, u"Duration:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText2.Wrap( -1 )
+		self.lblDuration = wx.StaticText( self, wx.ID_ANY, u"Duration:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblDuration.Wrap( -1 )
 
-		fgSizer3.Add( self.m_staticText2, 0, wx.ALL, 5 )
+		fgSizer7.Add( self.lblDuration, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
 
 		self.spnDuration = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 1, 30, 15 )
-		fgSizer3.Add( self.spnDuration, 0, wx.ALL|wx.EXPAND, 5 )
+		fgSizer7.Add( self.spnDuration, 0, wx.ALL|wx.EXPAND, 5 )
 
-		self.m_staticText3 = wx.StaticText( self, wx.ID_ANY, u"Generations:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText3.Wrap( -1 )
+		self.lblGenerations = wx.StaticText( self, wx.ID_ANY, u"Generaations:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblGenerations.Wrap( -1 )
 
-		fgSizer3.Add( self.m_staticText3, 0, wx.ALL, 5 )
+		fgSizer7.Add( self.lblGenerations, 0, wx.ALL, 5 )
 
 		self.spnGenerations = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 1, 5, 5 )
-		fgSizer3.Add( self.spnGenerations, 0, wx.ALL|wx.EXPAND, 5 )
+		fgSizer7.Add( self.spnGenerations, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL|wx.EXPAND, 5 )
 
-		self.m_staticText19 = wx.StaticText( self, wx.ID_ANY, u"Overlap:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText19.Wrap( -1 )
+		self.lblOverlap = wx.StaticText( self, wx.ID_ANY, u"Overlap:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblOverlap.Wrap( -1 )
 
-		fgSizer3.Add( self.m_staticText19, 0, wx.ALL, 5 )
+		fgSizer7.Add( self.lblOverlap, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
 
-		self.spnOverlap = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 2, 30, 5 )
-		fgSizer3.Add( self.spnOverlap, 0, wx.ALL, 5 )
+		self.spnOverlap = wx.SpinCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 0, 29, 5 )
+		fgSizer7.Add( self.spnOverlap, 0, wx.ALL|wx.EXPAND, 5 )
 
 
-		bSizer2.Add( fgSizer3, 0, wx.EXPAND, 5 )
+		bSizer3.Add( fgSizer7, 1, wx.EXPAND, 5 )
 
 		self.btnGenerate = wx.Button( self, wx.ID_ANY, u"Generate", wx.DefaultPosition, wx.DefaultSize, 0 )
-		bSizer2.Add( self.btnGenerate, 1, wx.ALL|wx.EXPAND, 5 )
+		bSizer3.Add( self.btnGenerate, 0, wx.ALL|wx.EXPAND, 5 )
 
-		bSizer2 = wx.BoxSizer( wx.HORIZONTAL )
+		bSizer4 = wx.BoxSizer( wx.HORIZONTAL )
 
-		self.m_staticText13 = wx.StaticText( self, wx.ID_ANY, u"Model:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText13.Wrap( -1 )
+		self.lblModel = wx.StaticText( self, wx.ID_ANY, u"Model:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblModel.Wrap( -1 )
 
-		bSizer2.Add( self.m_staticText13, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
+		bSizer4.Add( self.lblModel, 0, wx.ALL, 5 )
 
 		chcModelChoices = [ u"small", u"medium", u"large" ]
 		self.chcModel = wx.Choice( self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize, chcModelChoices, 0 )
 		self.chcModel.SetSelection( 0 )
-		bSizer2.Add( self.chcModel, 0, wx.ALL|wx.EXPAND, 5 )
+		bSizer4.Add( self.chcModel, 0, wx.ALL, 5 )
 
 
-		bSizer2.Add( bSizer2, 1, wx.EXPAND, 5 )
+		bSizer3.Add( bSizer4, 1, wx.EXPAND, 5 )
 
 
-		fgSizer2.Add( bSizer2, 0, 0, 5 )
+		fgSizer6.Add( bSizer3, 1, wx.EXPAND, 5 )
 
 
-		fgSizer1.Add( fgSizer2, 1, wx.EXPAND, 5 )
+		fgSizer5.Add( fgSizer6, 1, wx.EXPAND, 5 )
 
-		fgSizer4 = wx.FlexGridSizer( 7, 3, 0, 0 )
-		fgSizer4.AddGrowableCol( 1 )
-		fgSizer4.AddGrowableRow( 1 )
-		fgSizer4.AddGrowableRow( 2 )
-		fgSizer4.AddGrowableRow( 3 )
-		fgSizer4.AddGrowableRow( 4 )
-		fgSizer4.AddGrowableRow( 5 )
-		fgSizer4.SetFlexibleDirection( wx.BOTH )
-		fgSizer4.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
+		fgSizer8 = wx.FlexGridSizer( 7, 3, 0, 0 )
+		fgSizer8.AddGrowableCol( 1 )
+		fgSizer8.AddGrowableRow( 1 )
+		fgSizer8.AddGrowableRow( 2 )
+		fgSizer8.AddGrowableRow( 3 )
+		fgSizer8.AddGrowableRow( 4 )
+		fgSizer8.AddGrowableRow( 5 )
+		fgSizer8.SetFlexibleDirection( wx.BOTH )
+		fgSizer8.SetNonFlexibleGrowMode( wx.FLEX_GROWMODE_SPECIFIED )
 
-		self.m_staticText5 = wx.StaticText( self, wx.ID_ANY, u"Main Track", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText5.Wrap( -1 )
+		self.lblMain = wx.StaticText( self, wx.ID_ANY, u"Main:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblMain.Wrap( -1 )
 
-		fgSizer4.Add( self.m_staticText5, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.lblMain, 0, wx.ALL, 5 )
 
 		self.mctrlMain = wx.media.MediaCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize)
 		self.mctrlMain.SetPlaybackRate(1)
 		self.mctrlMain.SetVolume(1)
-		fgSizer4.Add( self.mctrlMain, 0, wx.ALL|wx.EXPAND, 2 )
+		fgSizer8.Add( self.mctrlMain, 0, wx.ALL|wx.EXPAND, 5 )
 
-		gSizer1 = wx.GridSizer( 2, 2, 0, 0 )
+		gSizer2 = wx.GridSizer( 2, 2, 0, 0 )
 
 		self.btnLoad = wx.Button( self, wx.ID_ANY, u"Load", wx.DefaultPosition, wx.DefaultSize, 0 )
-		gSizer1.Add( self.btnLoad, 0, wx.ALL, 5 )
+		gSizer2.Add( self.btnLoad, 0, wx.ALL, 5 )
 
 		self.btnSave = wx.Button( self, wx.ID_ANY, u"Save", wx.DefaultPosition, wx.DefaultSize, 0 )
-		gSizer1.Add( self.btnSave, 0, wx.ALL, 5 )
+		gSizer2.Add( self.btnSave, 0, wx.ALL, 5 )
 
 		self.btnClear = wx.Button( self, wx.ID_ANY, u"Clear", wx.DefaultPosition, wx.DefaultSize, 0 )
-		gSizer1.Add( self.btnClear, 0, wx.ALL, 5 )
+		gSizer2.Add( self.btnClear, 0, wx.ALL, 5 )
 
 
-		fgSizer4.Add( gSizer1, 1, 0, 0 )
+		fgSizer8.Add( gSizer2, 1, wx.EXPAND, 5 )
 
-		self.m_staticText4 = wx.StaticText( self, wx.ID_ANY, u"Option 1:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText4.Wrap( -1 )
+		self.lblOption1 = wx.StaticText( self, wx.ID_ANY, u"Option 1:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblOption1.Wrap( -1 )
 
-		fgSizer4.Add( self.m_staticText4, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.lblOption1, 0, wx.ALL, 5 )
 
 		self.mctrlOption1 = wx.media.MediaCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize)
 		self.mctrlOption1.SetPlaybackRate(1)
 		self.mctrlOption1.SetVolume(1)
-		fgSizer4.Add( self.mctrlOption1, 1, wx.ALL|wx.EXPAND, 2 )
+		fgSizer8.Add( self.mctrlOption1, 0, wx.ALL|wx.EXPAND, 5 )
 
 		self.btnOption1 = wx.Button( self, wx.ID_ANY, u"Keep", wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer4.Add( self.btnOption1, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.btnOption1, 0, wx.ALL, 5 )
 
-		self.m_staticText6 = wx.StaticText( self, wx.ID_ANY, u"Option 2:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText6.Wrap( -1 )
+		self.lblOption2 = wx.StaticText( self, wx.ID_ANY, u"Option 2:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblOption2.Wrap( -1 )
 
-		fgSizer4.Add( self.m_staticText6, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.lblOption2, 0, wx.ALL, 5 )
 
 		self.mctrlOption2 = wx.media.MediaCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize)
 		self.mctrlOption2.SetPlaybackRate(1)
 		self.mctrlOption2.SetVolume(1)
-		fgSizer4.Add( self.mctrlOption2, 0, wx.ALL|wx.EXPAND, 2 )
+		fgSizer8.Add( self.mctrlOption2, 0, wx.ALL|wx.EXPAND, 5 )
 
 		self.btnOption2 = wx.Button( self, wx.ID_ANY, u"Keep", wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer4.Add( self.btnOption2, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.btnOption2, 0, wx.ALL, 5 )
 
-		self.m_staticText61 = wx.StaticText( self, wx.ID_ANY, u"Option 3:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText61.Wrap( -1 )
+		self.lblOption3 = wx.StaticText( self, wx.ID_ANY, u"Option 3:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblOption3.Wrap( -1 )
 
-		fgSizer4.Add( self.m_staticText61, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.lblOption3, 0, wx.ALL, 5 )
 
 		self.mctrlOption3 = wx.media.MediaCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize)
 		self.mctrlOption3.SetPlaybackRate(1)
 		self.mctrlOption3.SetVolume(1)
-		fgSizer4.Add( self.mctrlOption3, 0, wx.ALL|wx.EXPAND, 2 )
+		fgSizer8.Add( self.mctrlOption3, 0, wx.ALL|wx.EXPAND, 5 )
 
 		self.btnOption3 = wx.Button( self, wx.ID_ANY, u"Keep", wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer4.Add( self.btnOption3, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.btnOption3, 0, wx.ALL, 5 )
 
-		self.m_staticText611 = wx.StaticText( self, wx.ID_ANY, u"Option 4:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText611.Wrap( -1 )
+		self.lblOption4 = wx.StaticText( self, wx.ID_ANY, u"Option 4:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblOption4.Wrap( -1 )
 
-		fgSizer4.Add( self.m_staticText611, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.lblOption4, 0, wx.ALL, 5 )
 
 		self.mctrlOption4 = wx.media.MediaCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize)
 		self.mctrlOption4.SetPlaybackRate(1)
 		self.mctrlOption4.SetVolume(1)
-		fgSizer4.Add( self.mctrlOption4, 0, wx.ALL|wx.EXPAND, 2 )
+		fgSizer8.Add( self.mctrlOption4, 0, wx.ALL|wx.EXPAND, 5 )
 
 		self.btnOption4 = wx.Button( self, wx.ID_ANY, u"Keep", wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer4.Add( self.btnOption4, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.btnOption4, 0, wx.ALL, 5 )
 
-		self.m_staticText6111 = wx.StaticText( self, wx.ID_ANY, u"Option 5:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText6111.Wrap( -1 )
+		self.lblOption5 = wx.StaticText( self, wx.ID_ANY, u"Option 5:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblOption5.Wrap( -1 )
 
-		fgSizer4.Add( self.m_staticText6111, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.lblOption5, 0, wx.ALL, 5 )
 
 		self.mctrlOption5 = wx.media.MediaCtrl( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize)
 		self.mctrlOption5.SetPlaybackRate(1)
 		self.mctrlOption5.SetVolume(1)
-		fgSizer4.Add( self.mctrlOption5, 0, wx.ALL|wx.EXPAND, 2 )
+		fgSizer8.Add( self.mctrlOption5, 0, wx.ALL|wx.EXPAND, 5 )
 
 		self.btnOption5 = wx.Button( self, wx.ID_ANY, u"Keep", wx.DefaultPosition, wx.DefaultSize, 0 )
-		fgSizer4.Add( self.btnOption5, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.btnOption5, 0, wx.ALL, 5 )
 
-		self.m_staticText11 = wx.StaticText( self, wx.ID_ANY, u"Status:", wx.DefaultPosition, wx.DefaultSize, 0 )
-		self.m_staticText11.Wrap( -1 )
+		self.lblStatusLabel = wx.StaticText( self, wx.ID_ANY, u"Status:", wx.DefaultPosition, wx.DefaultSize, 0 )
+		self.lblStatusLabel.Wrap( -1 )
 
-		fgSizer4.Add( self.m_staticText11, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.lblStatusLabel, 0, wx.ALL, 5 )
 
 		self.lblStatus = wx.StaticText( self, wx.ID_ANY, wx.EmptyString, wx.DefaultPosition, wx.DefaultSize, 0 )
 		self.lblStatus.Wrap( -1 )
 
-		fgSizer4.Add( self.lblStatus, 0, wx.ALL|wx.EXPAND, 5 )
+		fgSizer8.Add( self.lblStatus, 0, wx.ALL|wx.EXPAND, 5 )
 
-		self.progress_bar = wx.Gauge( self, wx.ID_ANY, 100, wx.DefaultPosition, wx.DefaultSize, wx.GA_HORIZONTAL|wx.BORDER_SUNKEN )
+		self.progress_bar = wx.Gauge( self, wx.ID_ANY, 100, wx.DefaultPosition, wx.DefaultSize, wx.GA_HORIZONTAL )
 		self.progress_bar.SetValue( 0 )
-		fgSizer4.Add( self.progress_bar, 0, wx.ALL, 5 )
+		fgSizer8.Add( self.progress_bar, 0, wx.ALL, 5 )
 
 
-		fgSizer1.Add( fgSizer4, 1, wx.EXPAND, 0 )
+		fgSizer5.Add( fgSizer8, 1, wx.EXPAND, 5 )
 
 
-		self.SetSizer( fgSizer1 )
+		self.SetSizer( fgSizer5 )
 		self.Layout()
 
 		self.Centre( wx.BOTH )

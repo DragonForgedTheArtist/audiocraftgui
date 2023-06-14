@@ -1,0 +1,8 @@
+
+Lib/*
+Scripts/*
+share/*
+temp/*
+__pycache__/*
+pyvenv.cfg
+savefiles/*.wav
