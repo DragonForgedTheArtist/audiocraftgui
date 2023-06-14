@@ -1,3 +1,4 @@
 torch>=2.0
+torchaudio
 wxpython
 git+https://git@github.com/facebookresearch/audiocraft#egg=audiocraft

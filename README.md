@@ -2,11 +2,11 @@
  A wxPython gui for AudioCraft
 
 # Installation
-
 - git clone https://github.com/DragonForgedTheArtist/audiocraftgui.git
 - cd audiocraftgui
 - python -m venv .
 - .\Scripts\activate
+- install pytorch as per the instructions here https://pytorch.org/get-started/locally/
 - pip install -r requirements.txt
 
 # Running
