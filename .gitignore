@@ -1,8 +1,10 @@
 
-Lib/*
-Scripts/*
-share/*
-temp/*
-__pycache__/*
+Lib/
+Scripts/
+share/
+temp/
+__pycache__/
 pyvenv.cfg
 savefiles/*.wav
+savefiles/*.mp3
+savefiles/Pixbay/
