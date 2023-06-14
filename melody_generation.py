@@ -1,7 +1,6 @@
 import torchaudio
 from audiocraft.models import MusicGen
 from audiocraft.data.audio import audio_write
-from audiocraft.utils.notebook import display_audio
 import os
 from utils import generate_random_filename
 
@@ -10,7 +9,7 @@ from utils import generate_random_filename
 
 temppath = "temp"
 generations = 3
-prompt = '80s pop track with bassy drums and synth'
+prompt = '80s pop track with bassy drums and synth, 110 bpm'
 duration = 30
 
 if not os.path.exists(temppath):
