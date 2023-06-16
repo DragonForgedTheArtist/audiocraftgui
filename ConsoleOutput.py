@@ -19,9 +19,12 @@ class ConsoleOutput:
         progress, total = self.extract_progress(text)
         
         if progress is not None and total is not None:
-            # Update the progress bar
-            self.progress_bar.SetValue(progress)
             self.progress_bar.SetRange(total)
+            # Update the progress bar
+            if progress < total:
+                self.progress_bar.SetValue(progress)
+            else:
+                self.progress_bar.SetValue(total)
         
     def extract_progress(self, text):
         # Parse the progress and total from the text
